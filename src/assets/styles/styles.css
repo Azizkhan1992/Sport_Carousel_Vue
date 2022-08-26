@@ -188,6 +188,7 @@ letter-spacing: 0.02em;
 text-align: right;
 }
 .sidebar-wrapper .sidebar-dropdown{
+position: relative;
 color: #000011;
 font-size: 0.95rem;
 font-weight: 700;
@@ -197,9 +198,14 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-items: center;
+box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+background: #ffffff;
 }
 
 .sidebar-wrapper .sidebar-dropdown .dropdown-item{
+    min-width: 125%;
+position: absolute;
+top: 20px;
 height: 0;
 transition: all 1s ease;
 transition-delay: .25s;
@@ -212,11 +218,24 @@ flex-direction: column;
 margin-left: 10px;
 }
 .sidebar-wrapper .sidebar-dropdown .dropdown-active{
-height: 125px;
+height: 120px;
 flex-direction: column;
 margin-top: 10px;
 margin-left: 10px;
 transform-origin: 1px 5px;
+box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+background: #ffffff;
+border-radius: 5px; 
+padding: 5px;
+z-index: 10;
+}
+.sidebar-wrapper .sidebar-dropdown .dropdown-active span{
+    margin-bottom: 3px;
+}
+.sidebar-wrapper .sidebar-dropdown .dropdown-active span:hover{
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.4), rgba(0, 128, 0, 0.6), rgba(255,255,0, 0.8));
+    border-radius: 3px;
+    padding-left: 5px;
 }
 .dropdown-visible .drop-svg-deactive{
 transition: transform 1s linear .25s;
@@ -248,7 +267,7 @@ width: 100%;
 width: 100%;
 }
 .carousel-slider .owl-carousel .owl-stage-outer .owl-stage{
-height: 700px;
+height: 750px;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -257,9 +276,13 @@ justify-items: center;
 
 .carousel-slider .owl-carousel .owl-stage-outer .owl-stage .owl-item{
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-items: center;
 width: 16.94% !important;
+}
+.carousel-slider .owl-carousel .owl-stage-outer .owl-stage .active{
+    transition: transform 1s linear;
 }
 
 .owl-item .carousel-wrapper{
@@ -268,12 +291,13 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-items: center;
-width: 130px;
+width: 160px;
 height: 480px;
 }
 
 .carousel-slider .owl-carousel .owl-stage-outer .owl-stage .center{
-transform: scale(1.45);
+transform: scale(1.75);
+transition: transform 1s linear;
 margin: 0 5px 0 5px;
 }
 
@@ -395,20 +419,6 @@ font-weight: 400;
 color: #858585;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.owl-nav, .owl-dots{
+    display: block !important;
+}

@@ -1,19 +1,20 @@
 <template>
     <div class="carousel-content">
+
         <carousel
-
         class="carousel-slider owl-theme" 
-    :autoplay="true" :mouseDrag="false" :items="5" :autoplayTimeout="2000" :loop="true" 
-    :fluid-speed="true" :center="true" :animateIn="true" :animateOut="true" :margin="25"
-
-    ref="carousel"
+     :autoplayTimeout="5000" :loop="true"
+    :autoplay="true" :fluid-speed="true" :center="true" :margin="15" 
+    :responsive="{0:{items: 1, nav:false}, 601:{items:5, nav: true}, 1240:{items: 5, nav:true}}"
         >
-            <div v-for="(slide, idx) in carouselItems" :key="idx" class="carousel-wrapper"
+        
+       <div v-for="(slide, idx) in carouselItems" :key="idx" class="carousel-wrapper"
         :style="{'background-image' : 'url(' + require('@/assets/Content/' + slide.background_img  ) + ')',
                 'background-repeat' : 'no-repeat',
-                'background-size' : 130 + 'px',
+                'background-size' : 160 + 'px',
                 'background-position' : 'center'
-        }"  
+        }" 
+        :ref="`item-${slide.id}`" 
         >
             <img :src="require('@/assets/Content/' + slide.img)" alt="">
             <div class="carousel-title">
@@ -23,7 +24,9 @@
             </div>
             
         </div>  
+        
         </carousel>
+
     </div>
 </template>
 <script>
@@ -81,6 +84,18 @@ export default {
         },
       ],
         }
+    },
+    mounted(){
+      this.catchItem()
+    },
+    methods:{
+      catchItem(){
+        this.carouselItems.forEach(elem => {
+          let item = this.$refs[`item-${elem.id}`]
+          console.log(item)
+
+        })
+      }
     }
 }
 </script>
