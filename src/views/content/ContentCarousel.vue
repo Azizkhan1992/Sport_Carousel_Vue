@@ -8,7 +8,7 @@
     :responsive="{0:{items: 1, nav:false}, 601:{items:5, nav: true}, 1240:{items: 5, nav:true}}"
         >
         
-       <div v-for="(slide, idx) in carouselItems" :key="idx" class="carousel-wrapper"
+       <div v-for="(slide, idx) in carouselItems" :key="idx" class="carousel-wrapper" :class="idx == 2 ? 'second-item' : ''"
         :style="{'background-image' : 'url(' + require('@/assets/Content/' + slide.background_img  ) + ')',
                 'background-repeat' : 'no-repeat',
                 'background-size' : 160 + 'px',
@@ -90,6 +90,8 @@ export default {
     },
     methods:{
       catchItem(){
+        // const not = document.getElementsByClassName('second-item')
+        // console.log(not)
         this.carouselItems.forEach(elem => {
           let item = this.$refs[`item-${elem.id}`]
           console.log(item)
